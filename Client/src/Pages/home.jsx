@@ -39,7 +39,7 @@ export default function Home() {
 
     return (
         <div className="home">
-            <Header />
+            <Header headingName="MovieCharcha" />
             
             <section className="search-movie">
                 <SearchBox search={search} setSearch={setSearch} />
