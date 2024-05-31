@@ -11,7 +11,7 @@ export default function Header(){
     const { name } = loggedData.loggedUser;
 
     function logout(){
-        localStorage.removeItem("nutrify-user");
+        localStorage.removeItem("moviecharcha-user");
         loggedData.setLoggedUser(null);
         navigate("/login");
     } 

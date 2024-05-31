@@ -1,23 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import Header from './header';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { authContext } from "../contexts/authContext";
+
 
 const Description = () => {
     const { imdbID } = useParams();
 
     const [data, setData] = useState({});
+    // Context Data (Globaly exist)
+    const loggedData = useContext(authContext); 
 
     const singleMovie = async () => {
-        const url = `https://www.omdbapi.com/?i=${imdbID}&apikey=f3686a30`;
+        const url = `http://localhost:3000/single/${imdbID}`;
     
         try {
-            const response = await fetch(url);
+            const response = await fetch(url,{
+                method:"GET",
+                headers:{
+                    "Authorization" : `Bearer ${loggedData.loggedUser.token}`
+                }
+            });
             const responseData = await response.json();
             console.log(responseData); // Log the parsed JSON data
             setData(responseData); // Set the data state with the parsed JSON data
-        } catch (error) {
+        }catch (error) {
             console.error("Failed to fetch movies:", error);
         }
     };

@@ -2,16 +2,25 @@ import { useContext, useEffect, useState } from "react";
 import Header from "../component/header";
 import SearchBox from "../component/searchBox";
 import MoiveList from "../component/moiveList";
+import { authContext } from "../contexts/authContext";
+
 
 export default function Home() {
     const [movies, setMovies] = useState([]);
     const [search, setSearch] = useState("");
+    // Context Data (Globaly exist)
+    const loggedData = useContext(authContext);
 
     const getMovieRequest = async () => {
-        const url = `https://www.omdbapi.com/?s=${search}&apikey=f3686a30`;
+        const url = `http://localhost:3000/api/${search}`;
 
         try {
-            const response = await fetch(url);
+            const response = await fetch(url,{
+                method:"GET",
+                headers:{
+                    "Authorization" : `Bearer ${loggedData.loggedUser.token}`
+                }
+            });
             const responseJson = await response.json();
 
             if (responseJson.Search) {
