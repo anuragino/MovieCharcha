@@ -14,6 +14,7 @@ const favouriteModel = require('./models/favouriteModel')
 const dotEnv = require("dotenv");
 dotEnv.config({path:"./config.env"});
 const mongoUrl = process.env.mongoUrl;
+const apiKey = process.env.apiKey;
 
 
 // connection 
@@ -117,6 +118,38 @@ app.post('/login',async (req,res)=>{
         res.status(500).send({message:"Some Problem while login"})
     }
     
+})
+
+// endpoint to get moives by name
+app.get("/api/:word",verifyToken,async (req,res)=>{
+    let word = req.params.word;
+    const url = `https://www.omdbapi.com/?s=${word}&apikey=${apiKey}`;
+    
+    try {
+        const response = await fetch(url);
+        const responseData = await response.json();
+        res.send(responseData);
+    }
+    catch (error) {
+        console.error("Failed to fetch movies:", error);
+        res.status(500).send("Error fetching movie data");
+    }
+})
+
+// endpoint to get moives by imdbID
+app.get("/single/:id",verifyToken,async (req,res)=>{
+    let id = req.params.id;
+    const url = `https://www.omdbapi.com/?i=${id}&apikey=${apiKey}`;
+    
+    try {
+        const response = await fetch(url);
+        const responseData = await response.json();
+        res.send(responseData);
+    }
+    catch (error) {
+        console.error("Failed to fetch movies:", error);
+        res.status(500).send("Error fetching movie data");
+    }
 })
 
 

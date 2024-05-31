@@ -15,7 +15,7 @@ import Description from './component/description'
 
 function App() {
 
-  const [loggedUser,setLoggedUser] = useState(JSON.parse(localStorage.getItem("nutrify-user")));
+  const [loggedUser,setLoggedUser] = useState(JSON.parse(localStorage.getItem("moviecharcha-user")));
 
 
   return (

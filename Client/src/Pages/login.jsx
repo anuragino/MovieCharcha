@@ -65,7 +65,7 @@ export default function Login(){
         .then((data)=>{
             console.log(data);
             if(data.token!==undefined){
-                localStorage.setItem("nutrify-user",JSON.stringify(data));
+                localStorage.setItem("moviecharcha-user",JSON.stringify(data));
                 loggedData.setLoggedUser(data);
                 navigate("/home")
             }
