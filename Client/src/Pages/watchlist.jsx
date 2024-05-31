@@ -1,12 +1,23 @@
-import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams,useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { FavoritesContext } from '../contexts/FavoritesContext'; // Import FavoritesContext
+import { authContext } from "../contexts/authContext";
+import Header from '../component/header';
 
-export default function MovieList({ movies }) {
+
+
+const WatchList = () => {
+    const { imdbID } = useParams();
+    const { favorites, addToFavorites, removeFromFavorites } = useContext(FavoritesContext);
+    // Context Data (Globaly exist)
+    const loggedData = useContext(authContext); 
+
+    const [data, setData] = useState({});
+
+
     const navigate = useNavigate();
-    const { favorites, addToFavorites, removeFromFavorites } = useContext(FavoritesContext); // Use the context
 
     const handleIconClick = (e, movieId) => {
         e.stopPropagation(); // Prevents triggering the parent onClick
@@ -18,8 +29,14 @@ export default function MovieList({ movies }) {
     };
 
     return (
-        <>
-            {movies.map((movie) => (
+        <div>
+            <Header headingName="WatchList" />
+            <h4>hello watchlist</h4>
+
+            {
+                console.log(favorites)
+            }
+            {/* {favorites.map((movie) => (
                 <div
                     key={movie.imdbID}
                     className="fav-item"
@@ -46,7 +63,9 @@ export default function MovieList({ movies }) {
                         </div>
                     </div>
                 </div>
-            ))}
-        </>
+            ))} */}
+        </div>
     );
-}
+};
+
+export default WatchList;
