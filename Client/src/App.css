@@ -1,0 +1,252 @@
+ .container{
+    width: 100vw;
+    height: 100vh;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+ }
+
+ .form{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    align-items: center;
+ }
+
+ .inp{
+    width: 100%;
+    height: 45px;
+    font-size: 15px;
+    text-indent: 20px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    outline: none;
+    transition: box-shadow 0.3s;
+  }
+
+  .inp:focus {
+    box-shadow: 0 0 10px 0 rgb(255, 64, 64); 
+  }
+
+  .log-img{
+    height: 35vh;
+  }
+
+  .link{
+    color: #C11119;
+  }
+  
+  .link:hover{
+    text-shadow: 0 0 5px #ff1616;
+  }
+
+  /* password */
+ .password-input {
+    width: 100%;
+    position: relative;
+  }
+  
+  .toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+    transition: color 0.3s ease;
+  }
+  
+  .password-toggle-icon:hover {
+    color: #555; 
+  }
+  
+  /* Not Found */
+  .nf>h1{
+    color: white;
+  }
+  
+  /* Message */
+  .success{
+    background-color:  rgb(51, 225, 196);
+    color: rgb(2, 112, 75);
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    opacity: 1;
+  }
+  
+  .error{
+    background-color: rgb(253, 52, 82);
+    color: rgb(150, 0, 0);
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    opacity: 1;
+  }
+  
+  .invisible-msg{
+    width: 100%;
+    opacity: 0;
+  }
+
+  /* header */
+  .header {
+    height: 30vh;
+    background-image: url(/background.jpg);
+    background-size: cover;
+    background-color: #666;
+    background-blend-mode: multiply;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+    width: 100vw;
+  }
+
+
+  .header>h1{
+    color: white;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  }
+
+  .profile{
+    display: flex;
+    column-gap: 2rem;
+    position: absolute;
+    right: 5rem;
+    top: 2rem;
+  }
+  /* HOME */
+  .home{
+    background-color: #212121;
+    height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  .search-movie{
+    width: 60vw;
+    position: absolute;
+    left: 18vw;
+    top: 27vh;
+  }
+
+  .show-movie{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+    width: 60vw;
+    margin: 0px auto;
+    padding: 50px 20px;
+  }
+
+/* Favourite Items Container */
+
+.fav-item {
+  box-shadow:  3px 3px #363636;
+  margin: 0px 5px 25px 5px;
+  width: 28%;
+  padding: 10px;
+  background-color: #2e2c2c;
+  border-radius: 10px;
+}
+
+.fav-item:hover{
+  background-color: #424242;
+  box-shadow: 0 0 10px 0 rgb(255, 64, 64); 
+}
+
+.fav-item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.fav-poster img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.fav-details-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px 5px 5px 0px;
+}
+
+.fav-movie-name {
+  color: white;
+  font-size: 18px;
+  font-weight: bolder;
+  margin-bottom: 0rem;
+}
+
+
+/* Movie Container */
+.movie-container {
+  width: 50%;
+  background-color: #2e2c2c;
+  padding: 20px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  box-shadow:  3px 3px #d69393;
+}
+
+.movie-poster {
+  width: 50%;
+}
+
+.movie-poster img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.movie-details {
+  width: 100%;
+  padding: 0px 10px 0px 20px;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+.details-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.dh-ls {
+  width: 87%;
+}
+
+.dh-rs {
+  text-align: right;
+  width: 10%;
+  padding: 5px 0px 0px 0px;
+}
+
+.details-header h1 {
+  padding-bottom: 0px;
+}
+
+.italics-text {
+  font-size: 15px;
+  color: #eebfbf;
+}
+
+.details-ul {
+  list-style-type: none;
+  padding-left: 0px;
+  margin-top: 10px;
+  color: white;
+}
