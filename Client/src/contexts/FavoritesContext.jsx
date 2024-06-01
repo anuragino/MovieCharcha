@@ -10,7 +10,7 @@ export const FavoritesProvider = ({ children }) => {
     const loggedData = useContext(authContext);
 
     const singleMovie = async (imdbID) => {
-        const url = `http://localhost:3000/single/${imdbID}`;
+        const url = `https://moviecharcha-api.vercel.app/single/${imdbID}`;
     
         try {
             const response = await fetch(url, {
@@ -38,7 +38,7 @@ export const FavoritesProvider = ({ children }) => {
             year: movieData.Year,
         };
 
-        fetch("http://localhost:3000/favourite", {
+        fetch("https://moviecharcha-api.vercel.app/favourite", {
             method: "POST",
             body: JSON.stringify(favItem),
             headers: {
@@ -60,7 +60,7 @@ export const FavoritesProvider = ({ children }) => {
     };
 
     const removeFromFavorites = (imdbID) => {
-        const url = `http://localhost:3000/favourite/${loggedData.loggedUser.userid}/${imdbID}`;
+        const url = `https://moviecharcha-api.vercel.app/favourite/${loggedData.loggedUser.userid}/${imdbID}`;
 
         fetch(url, {
             method: "DELETE",
@@ -83,7 +83,7 @@ export const FavoritesProvider = ({ children }) => {
     };
 
     const fetchFavorites = () => {
-        const url = `http://localhost:3000/favourite/${loggedData.loggedUser.userid}`;
+        const url = `https://moviecharcha-api.vercel.app/favourite/${loggedData.loggedUser.userid}`;
 
         fetch(url, {
             method: "GET",

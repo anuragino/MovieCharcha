@@ -39,7 +39,7 @@ export default function Login(){
         event.preventDefault(); 
         console.log(userCred);
 
-        fetch("http://localhost:3000/login",{
+        fetch("https://moviecharcha-api.vercel.app/login",{
             method:"POST",
             body:JSON.stringify(userCred),
             headers:{
