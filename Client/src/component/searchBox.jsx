@@ -9,7 +9,7 @@ export default function SearchBox({ search, setSearch }){
             className="inp"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
-            placeholder="Type to search..."
+            placeholder="Search Moives..."
           />
         </div>
     );

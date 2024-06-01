@@ -22,7 +22,7 @@ export default function MovieList({ movies }) {
     return (
         <>
             {movies.map((movie) => (
-                <div
+                <section
                     key={movie.imdbID}
                     className="fav-item"
                     onClick={() => navigate(`/description/${movie.imdbID}`)}
@@ -30,8 +30,8 @@ export default function MovieList({ movies }) {
                     <div className="fav-poster">
                         <img src={movie.Poster} alt="Movie" />
                     </div>
-                    <div className="fav-details">
-                        <div className="fav-details-box">
+                    <section className="fav-details">
+                        <article className="fav-details-box">
                             <div>
                                 <p className="fav-movie-name">{movie.Title}</p>
                                 <p className="fav-movie-rating">
@@ -45,9 +45,9 @@ export default function MovieList({ movies }) {
                                     onClick={(e) => handleIconClick(e, movie.imdbID)}
                                 />
                             </div>
-                        </div>
-                    </div>
-                </div>
+                        </article>
+                    </section>
+                </section>
             ))}
         </>
     );
