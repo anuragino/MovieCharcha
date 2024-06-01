@@ -2,6 +2,7 @@ import { useState,useContext } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { authContext } from "../contexts/authContext";
 
 
@@ -80,7 +81,13 @@ export default function Login(){
 
     return(
         <section className="container">
-            <h1>Login to Movies</h1>
+            <div className="t-git">
+                <h1>Login to Movies</h1>
+                <a href="https://github.com/anuragino/MovieCharcha" target="_blank"  className="gitH">
+                    <FontAwesomeIcon icon={faGithub} style={{color: "#C11119",}} />
+                </a>
+            </div>
+            
             <img src="/login.svg" alt="login" className="log-img" />
             <form className="form" onSubmit={handleSubmit}>
 
