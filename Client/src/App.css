@@ -153,10 +153,12 @@
     font-family: "Roboto", sans-serif;
     font-weight:500 ;
     padding: 10px 15px;
+    transition: font-size 0.3s, text-shadow 0.3s;
   }
 
   .nav-text:hover{
-    color: #000000;
+    font-size: 1.3rem;
+    text-shadow: 5px 5px 3px #ff1616;
   }
 
 
@@ -164,7 +166,7 @@
   .active{
     background-color: #C11119;
     font: white;
-    border-radius: 20%;
+    border-radius:20px;
   }
 
 
