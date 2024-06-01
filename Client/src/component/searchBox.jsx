@@ -12,5 +12,5 @@ export default function SearchBox({ search, setSearch }){
             placeholder="Type to search..."
           />
         </div>
-      );
+    );
 }

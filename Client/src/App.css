@@ -183,6 +183,11 @@
     top: 27vh;
   }
 
+  .no-result{
+    height: 50vh;
+    margin-left: 18vw;
+  }
+
   .show-movie{
     display: flex;
     flex-direction: row;

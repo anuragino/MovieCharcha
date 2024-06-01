@@ -154,7 +154,7 @@ app.get("/single/:id",verifyToken,async (req,res)=>{
 
 
 // endpoint to track a movie
-app.post("/track",verifyToken,async (req,res)=>{
+app.post("/favourite",verifyToken,async (req,res)=>{
     let favData = req.body;
     try{
         let data = await favouriteModel.create(favData);
@@ -168,19 +168,42 @@ app.post("/track",verifyToken,async (req,res)=>{
 })
 
 
-// endpoint to fetch all fav movies
-app.get("/track/:userId",verifyToken,async (req,res)=>{
+// endpoint to remove from favourite
+app.delete("/favourite/:userId/:imdbID",verifyToken,async (req, res) => {
+    const { imdbID } = req.params;
     let user = req.params.userId;
 
-    try{
-        let movies = await favouriteModel.find({userId:user}).populate('userId').populate('foodId')
-        res.send(movies);
-    }
-    catch(err){
+    try {
+        const result = await favouriteModel.findOneAndDelete({ imdbID: imdbID, userId: user });
+        if (!result) {
+            return res.status(404).send({ message: "Movie not found in favorites" });
+        }
+        res.status(200).send({ message: "Movie removed from favorites" });
+    } catch (err) {
         console.log(err);
-        res.status(500).send({message:"Error while tracking user data"})
+        res.status(500).send({ message: "Error while removing movie from favorites" });
     }
-})
+});
+
+
+// endpoint to fetch all fav movies
+app.get("/favourite/:userId", verifyToken, async (req, res) => {
+    const user = req.params.userId;
+
+    try {
+        const movies = await favouriteModel.find({ userId: user });
+        
+        if (!movies) {
+            return res.status(404).send({ message: "No favorite movies found for this user" });
+        }
+
+        res.status(200).send(movies);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send({ message: "Error while fetching user's favorite movies" });
+    }
+});
+
 
 app.listen(3000,()=>{
     console.log("Connection Established")

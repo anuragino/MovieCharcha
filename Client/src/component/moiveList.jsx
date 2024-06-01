@@ -2,15 +2,17 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
-import { FavoritesContext } from '../contexts/FavoritesContext'; // Import FavoritesContext
+import { FavoritesContext } from '../contexts/FavoritesContext'; 
 
 export default function MovieList({ movies }) {
     const navigate = useNavigate();
     const { favorites, addToFavorites, removeFromFavorites } = useContext(FavoritesContext); // Use the context
 
+    const isFavorite = (movieId) => favorites.some(fav => fav.imdbID === movieId);
+
     const handleIconClick = (e, movieId) => {
         e.stopPropagation(); // Prevents triggering the parent onClick
-        if (favorites[movieId]) {
+        if (isFavorite(movieId)) {
             removeFromFavorites(movieId);
         } else {
             addToFavorites(movieId);
@@ -39,7 +41,7 @@ export default function MovieList({ movies }) {
                             <div>
                                 <FontAwesomeIcon
                                     icon={faBookmark}
-                                    style={{ color: favorites[movie.imdbID] ? 'red' : 'white', cursor: 'pointer' }}
+                                    style={{ color: isFavorite(movie.imdbID) ? 'red' : 'white', cursor: 'pointer' }}
                                     onClick={(e) => handleIconClick(e, movie.imdbID)}
                                 />
                             </div>
