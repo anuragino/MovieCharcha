@@ -8,50 +8,16 @@ const favouriteSchema = mongoose.Schema({
         require:true
     },
     imdbID:{
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'imdb',
+        type : String,
         require:true
     },
-    actors:{
-        type:String,
-    },
-    director:{
-        type:String,
-    },
-    writer:{
-        type:String,
-    },
-    boxOffice:{
-        type:String,
-    },
-    dvd:{
-        type:String,
-    },
     year:{
-        type:String,
-    },
-    genre:{
-        type:String,
-    },
-    language:{
-        type:String,
-    },
-    plot:{
         type:String,
     },
     poster:{
         type:String,
     },
     title:{
-        type:String,
-    },
-    rated:{
-        type:String,
-    },
-    runtime:{
-        type:String,
-    },
-    awards:{
         type:String,
     },
 });

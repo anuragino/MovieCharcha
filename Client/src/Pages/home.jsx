@@ -4,11 +4,10 @@ import SearchBox from "../component/searchBox";
 import MoiveList from "../component/moiveList";
 import { authContext } from "../contexts/authContext";
 
-
 export default function Home() {
     const [movies, setMovies] = useState([]);
     const [search, setSearch] = useState("");
-    // Context Data (Globaly exist)
+    // Context Data (Globally exist)
     const loggedData = useContext(authContext);
 
     const getMovieRequest = async () => {
@@ -25,6 +24,8 @@ export default function Home() {
 
             if (responseJson.Search) {
                 setMovies(responseJson.Search);
+            } else {
+                setMovies([]); // If there are no search results, set movies to an empty array
             }
         } catch (error) {
             console.error("Failed to fetch movies:", error);
@@ -32,10 +33,10 @@ export default function Home() {
     };
 
     useEffect(() => {
-        if (search) {
+        if (search || movies.length === 0) {
             getMovieRequest();
         }
-    }, [search]);
+    }, [search]); // Re-fetch when search changes or movies array is empty
 
     return (
         <div className="home">
@@ -46,9 +47,12 @@ export default function Home() {
             </section>
             
             <section className="show-movie">
-                <MoiveList movies={movies} />
+                {movies.length === 0 && search === "" ? (
+                    <img className="no-result" src="empty.svg" alt="No Results" />
+                ) : (
+                    <MoiveList movies={movies} />
+                )}
             </section>
-            
         </div>
     );
 }

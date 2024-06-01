@@ -1,19 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Header from './header';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { FavoritesContext } from '../contexts/FavoritesContext'; // Import FavoritesContext
 import { authContext } from "../contexts/authContext";
 
-
-
 const Description = () => {
     const { imdbID } = useParams();
     const { favorites, addToFavorites, removeFromFavorites } = useContext(FavoritesContext);
-    // Context Data (Globaly exist)
-    const loggedData = useContext(authContext); 
-
+    const loggedData = useContext(authContext);
     const [data, setData] = useState({});
 
     const singleMovie = async () => {
@@ -35,7 +31,9 @@ const Description = () => {
 
     useEffect(() => {
         singleMovie();
-    }, []);
+    }, [imdbID]);
+
+    const isFavorite = favorites.some(fav => fav.imdbID === imdbID);
 
     return (
         <div>
@@ -52,13 +50,13 @@ const Description = () => {
                         <div className="dh-rs">
                             <FontAwesomeIcon
                                 icon={faBookmark}
-                                style={{ color: favorites[data.imdbID] ? 'red' : 'white', cursor: 'pointer' }}
+                                style={{ color: isFavorite ? 'red' : 'white', cursor: 'pointer' }}
                                 onClick={(e) => {
                                     e.stopPropagation();
-                                    if (favorites[data.imdbID]) {
-                                        removeFromFavorites(data.imdbID);
+                                    if (isFavorite) {
+                                        removeFromFavorites(imdbID);
                                     } else {
-                                        addToFavorites(data.imdbID);
+                                        addToFavorites(imdbID);
                                     }
                                 }}
                             />
