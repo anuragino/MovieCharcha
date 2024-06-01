@@ -13,7 +13,7 @@ const Description = () => {
     const [data, setData] = useState({});
 
     const singleMovie = async () => {
-        const url = `http://localhost:3000/single/${imdbID}`;
+        const url = `https://moviecharcha-api.vercel.app/single/${imdbID}`;
     
         try {
             const response = await fetch(url, {

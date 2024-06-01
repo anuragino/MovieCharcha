@@ -11,7 +11,7 @@ export default function Home() {
     const loggedData = useContext(authContext);
 
     const getMovieRequest = async () => {
-        const url = `http://localhost:3000/api/${search}`;
+        const url = `https://moviecharcha-api.vercel.app/api/${search}`;
 
         try {
             const response = await fetch(url,{
