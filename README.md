@@ -1,14 +1,13 @@
 # 🍿 MovieCharcha
 MovieCharcha is a cutting-edge movie discovery and watchlist web application powered by MongoDB, React, and Express. Users can search for movies, add their favorites to a personalized watchlist, and mark movies as seen once they have watched them. With a sleek and intuitive user interface, MovieCharcha provides a seamless and engaging experience for movie enthusiasts, helping them keep track of their viewing preferences and explore new films effortlessly.
 
-
 ---
 ## 🛠️ Technologies Used
 
 - **React (Frontend):** JavaScript library for dynamic UIs, component-based, promotes reusability.
-- **Node.js (Runtime Environment):** Server-side JavaScript runtime, enables backend development with JavaScript.
 - **Express.js (Backend):** Minimalist Node.js framework for building scalable, efficient backend APIs.
 - **MongoDB (Database):** NoSQL database, flexible JSON-like documents, high performance, scalability.
+- **OMDB API:** Provides comprehensive movie data, enabling real-time search and detailed information retrieval.
 
 ## 🍽️ Features
 
